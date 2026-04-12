@@ -222,15 +222,6 @@ fpath+=~/.zfunc
 autoload -Uz compinit && compinit
 
 
-# python virtualenv convenience
-workon (){
-    if [[ -n "$2" ]]; then
-        pyenv activate $2
-    else
-        pyenv activate $1
-    fi
-    cd ~/sites/$1
-}
 
 mkprojdirs (){
     mkdir ~/sites/$1
@@ -244,22 +235,3 @@ mkprojdirs (){
     mkdir var/log
     mkdir var/run
 }
-
-# Python Poetry config
-export PATH="$HOME/.local/bin:$PATH"
-export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
-
-# Pyenv configuration
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-
-
-export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
-
-
-# UIC Project configs
-export TUTOR_ROOT=~/sites/uic/proj/uic
-export TUTOR_PLUGINS_ROOT=~/sites/uic/proj/uic_plugins
