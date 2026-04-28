@@ -27,8 +27,8 @@ colors
 autoload -Uz compinit vcs_info
 compinit
 HISTFILE=~/.histfile
-HISTSIZE=5000
-SAVEHIST=5000
+HISTSIZE=10000
+SAVEHIST=10000
 setopt appendhistory sharehistory autocd transient_rprompt hist_ignore_all_dups prompt_subst
 bindkey -e
 
@@ -217,21 +217,12 @@ $userpart $tty_color%l $(time_display)%(?..$error_color %? $end_error_color)
 $(virt_prompt)$prompt_color%#%{$reset_color%} '
 export RPS1='$path_color%/%{$reset_color%} $(vcs_prompt)'
 
-# load autocopmletions (poetry)
+# load autocompletions (poetry)
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit
 
+# configure mise universal runtime version manager
+eval "$(/home/shemmy/.local/bin/mise activate zsh)"
+eval "$(~/.local/bin/mise activate zsh)"
 
-
-mkprojdirs (){
-    mkdir ~/sites/$1
-    cd ~/sites/$1
-    mkdir proj
-    mkdir src
-    mkdir htdocs
-    mkdir htdocs/static
-    mkdir htdocs/media
-    mkdir var
-    mkdir var/log
-    mkdir var/run
-}
+export VCPKG_ROOT=~/tools/vcpkg

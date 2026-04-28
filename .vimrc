@@ -133,8 +133,8 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use spaces instead of tabs
-set expandtab
+" Use spaces instead of tabs (should only be for python)
+autocmd Filetype python setlocal expandtab
 
 " Be smart when using tabs ;)
 set smarttab
@@ -153,4 +153,8 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
-
+function! Formatonsave()
+  let l:formatdiff = 1
+  pyf /usr/share/clang/clang-format-18/clang-format.py
+endfunction
+autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()

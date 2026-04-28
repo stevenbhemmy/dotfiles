@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =5
-let g:netrw_dirhist_5='/home/shemmy/sites/sfpi/proj/sfpiweb/docker-utils/config'
-let g:netrw_dirhist_4='/home/shemmy/sites'
-let g:netrw_dirhist_3='/etc/modprobe.d'
-let g:netrw_dirhist_2='/etc/rcS.d'
-let g:netrw_dirhist_1='/etc/rc6.d'
